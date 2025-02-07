@@ -1,35 +1,53 @@
-import type { Metadata } from "next";
-import { IBM_Plex_Sans } from "next/font/google";
-import { cn } from "@/lib/utils";                          //utils file created by Shadcn
-import { ClerkProvider } from "@clerk/nextjs";
+import type { Metadata } from 'next'
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
+import { Geist, Geist_Mono } from 'next/font/google'
+import './globals.css'
 
-import "./globals.css";                                   //helper class for desigining 
+const geistSans = Geist({
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
+})
 
-const IBMPlex = IBM_Plex_Sans({ 
-  subsets: ["latin"],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-ibm-plex'
-});
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
-  title: "Imaginify",
-  description: "AI-powered image generator",
-};
+  title: 'Imaginify',
+  description: 'AI-powered image generator',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <ClerkProvider appearance={{
+    <ClerkProvider  appearance={{
       variables: { colorPrimary: '#624cf5' }
     }}>
       <html lang="en">
-        <body className={cn("font-IBMPlex antialiased", IBMPlex.variable)}>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <header className="flex justify-end items-center p-4 gap-4 h-16">
+            <SignedOut>
+              <SignInButton />
+              <SignUpButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </header>
           {children}
         </body>
       </html>
     </ClerkProvider>
-  );
+  )
 }
