@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Imaginify',
+  title: 'PixMorph',
   description: 'AI-powered image generator',
 }
 

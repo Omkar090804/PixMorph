@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ========================================== BASE STYLES */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -57,13 +58,39 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* ========================================== UTILITIES */
+@layer utilities {
+  /* ===== FLEX UTILITIES */
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  /* ===== GRADIENT TEXT */
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent;
+  }
+
+  /* ===== WRAPPER */
+  .wrapper {
+    @apply max-w-5xl mx-auto px-5 md:px-10 w-full;
+  }
+}
+
+/* ========================================== COMPONENT STYLES */
+.auth {
+  @apply flex-center min-h-screen w-full bg-purple-100;
 }
