@@ -11,7 +11,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <aside className="sidebar">
+    <aside className="sidebar w-48"> {/* Reduced width to 48 (12rem) */}
       <div className="flex size-full flex-col gap-4 justify-start">
         {/* Logo */}
         <Link href="/" className="sidebar-logo mt-4">
@@ -31,7 +31,7 @@ const Sidebar = () => {
                     <li
                       key={link.route}
                       className={`sidebar-nav_element group ${
-                        isActive ? 'bg-purple-gradient text-white' : 'text-gray-700'
+                        isActive ? 'bg-purple-gradient text-white' : 'text-gray-900' // Darkened text color
                       }`}
                     >
                       <Link className="sidebar-link" href={link.route}>
@@ -58,7 +58,7 @@ const Sidebar = () => {
                     <li
                       key={link.route}
                       className={`sidebar-nav_element group ${
-                        isActive ? 'bg-purple-gradient text-white' : 'text-gray-700'
+                        isActive ? 'bg-purple-gradient text-white' : 'text-gray-900' // Darkened text color
                       }`}
                     >
                       <Link className="sidebar-link" href={link.route}>
@@ -80,9 +80,11 @@ const Sidebar = () => {
 
           {/* Sign-out state */}
           <SignedOut>
-            <Button asChild className="button bg-purple-gradient bg-cover">
-              <Link href="/sign-in">Login</Link>
-            </Button>
+            <div className="flex flex-col items-center justify-center text-center">
+              <p className="text-lg font-bold text-gray-800"> {/* Increased size and bold text */}
+              An application that transforms imagination into reality.
+              </p>
+            </div>
           </SignedOut>
         </nav>
       </div>
