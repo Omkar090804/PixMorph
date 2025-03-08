@@ -12,15 +12,17 @@ const Sidebar = () => {
 
   return (
     <aside className="sidebar">
-      <div className="flex size-full flex-col gap-4">
-        <Link href="/" className="sidebar-logo">
+      <div className="flex size-full flex-col gap-4 justify-start">
+        {/* Logo */}
+        <Link href="/" className="sidebar-logo mt-4">
           <Image src="/assets/images/logo-text.svg" alt="logo" width={180} height={28} />
         </Link>
 
-        <nav className="sidebar-nav">
+        {/* Navigation options moved up with pt-2 (padding-top) */}
+        <nav className="sidebar-nav flex flex-col justify-start pt-2"> {/* Added pt-2 */}
           <SignedIn>
-            {/* Directly pass JSX.Element to SignedIn */}
             <>
+              {/* First set of navigation links */}
               <ul className="sidebar-nav_elements">
                 {navLinks.slice(0, 6).map((link) => {
                   const isActive = link.route === pathname;
@@ -40,13 +42,14 @@ const Sidebar = () => {
                           height={24}
                           className={`${isActive && 'brightness-200'}`}
                         />
-                        {link.label}
+                        <span>{link.label}</span>
                       </Link>
                     </li>
                   );
                 })}
               </ul>
 
+              {/* Second set of navigation links */}
               <ul className="sidebar-nav_elements">
                 {navLinks.slice(6).map((link) => {
                   const isActive = link.route === pathname;
@@ -66,21 +69,17 @@ const Sidebar = () => {
                           height={24}
                           className={`${isActive && 'brightness-200'}`}
                         />
-                        {link.label}
+                        <span>{link.label}</span>
                       </Link>
                     </li>
                   );
                 })}
-
-                <li className="flex-center cursor-pointer gap-2 p-4">
-                  <UserButton afterSignOutUrl='/' showName />
-                </li>
               </ul>
             </>
           </SignedIn>
 
+          {/* Sign-out state */}
           <SignedOut>
-            {/* Directly pass JSX.Element to SignedOut */}
             <Button asChild className="button bg-purple-gradient bg-cover">
               <Link href="/sign-in">Login</Link>
             </Button>
