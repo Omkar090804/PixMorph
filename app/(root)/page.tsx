@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-const Home = () => {
+const WelcomePage = () => {
   return (
     <div className="flex flex-col items-center min-h-screen">
       {/* Welcome Text at the Top */}
@@ -29,4 +29,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default WelcomePage;

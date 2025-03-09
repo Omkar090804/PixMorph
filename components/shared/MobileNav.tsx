@@ -3,7 +3,7 @@ import React from 'react';
 const MobileNav = () => {
   return (
     <div>
-      <strong>Home</strong>
+      <strong></strong>
     </div>
   );
 };
