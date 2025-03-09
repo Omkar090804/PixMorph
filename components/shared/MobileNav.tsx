@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const MobileNav = () => {
   return (
-    <div>MobileNav</div>
-  )
-}
+    <div>
+      <strong>Home</strong>
+    </div>
+  );
+};
 
-export default MobileNav
-  
+export default MobileNav;
