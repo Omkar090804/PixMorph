@@ -1,17 +1,10 @@
-import {
-    Sheet,
-    SheetContent,
-    SheetDescription,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-  } from "@/components/ui/sheet"
-  
+import React from 'react'
 
 const MobileNav = () => {
   return (
-    <div></div>
+    <div>MobileNav</div>
   )
 }
 
 export default MobileNav
+  
