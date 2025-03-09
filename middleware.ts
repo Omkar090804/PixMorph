@@ -4,6 +4,8 @@ import { NextResponse } from "next/server";
 const isPublicRoute = createRouteMatcher([
   "/",
   "/api/webhooks/clerk",
+  "/sign-in", // Clerk's sign-in page
+  "/sign-up", // Clerk's sign-up page
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
@@ -11,14 +13,16 @@ export default clerkMiddleware(async (auth, req) => {
     return NextResponse.next(); // Allow access to public routes
   }
 
-  const authObject = await auth(); // Await authentication
+  const authObject = await auth();
 
   if (!authObject.userId) {
-    // Redirect unauthenticated users to the sign-in page
-    return authObject.redirectToSignIn();
+    // Avoid infinite redirect loop by not redirecting if already on /sign-in
+    if (req.nextUrl.pathname !== "/sign-in") {
+      return authObject.redirectToSignIn();
+    }
   }
 
-  return NextResponse.next(); // Allow authenticated users
+  return NextResponse.next();
 });
 
 export const config = {
