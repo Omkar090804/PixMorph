@@ -14,7 +14,7 @@ declare global {
 }
 
 // Check if there's a cached connection in the global scope
-let cached: MongooseConnection = global.mongoose || { conn: null, promise: null };
+const cached: MongooseConnection = global.mongoose || { conn: null, promise: null }; // Changed `let` to `const`
 
 export const connectToDatabase = async () => {
   // If a connection already exists, return it
