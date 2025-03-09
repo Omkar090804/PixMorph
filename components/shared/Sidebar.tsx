@@ -14,7 +14,7 @@ const Sidebar = () => {
       <div className="flex size-full flex-col gap-4 justify-start">
         {/* Logo */}
         <Link href="/" className="sidebar-logo mt-4">
-          <Image src="/assets/images/logo-text.svg" alt="logo" width={180} height={28} />
+          <Image src="/assets/images/logo.svg" alt="logo" width={280} height={28} />
         </Link>
 
         {/* Navigation options moved up with pt-2 (padding-top) */}
