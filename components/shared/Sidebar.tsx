@@ -1,11 +1,10 @@
 "use client";
 
 import { navLinks } from '@/constants';
-import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { SignedIn, SignedOut } from '@clerk/nextjs'; // Removed UserButton
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Button } from '../ui/button';
 
 const Sidebar = () => {
   const pathname = usePathname();
