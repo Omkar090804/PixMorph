@@ -140,7 +140,7 @@ export const download = (url: string, filename: string) => {
 };
 
 // DEEP MERGE OBJECTS
-export const deepMergeObjects = <T extends Record<string, any>>(
+export const deepMergeObjects = <T extends Record<string, unknown>>(
   obj1: T,
   obj2: T
 ): T => {
@@ -158,7 +158,10 @@ export const deepMergeObjects = <T extends Record<string, any>>(
         obj2[key] &&
         typeof obj2[key] === "object"
       ) {
-        output[key] = deepMergeObjects(obj1[key], obj2[key]);
+        output[key] = deepMergeObjects(
+          obj1[key] as Record<string, unknown>,
+          obj2[key] as Record<string, unknown>
+        ) as T[typeof key];
       } else {
         output[key] = obj1[key];
       }
