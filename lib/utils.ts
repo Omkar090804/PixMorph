@@ -84,7 +84,7 @@ export function removeKeysFromQuery({
 }
 
 // DEBOUNCE
-export const debounce = <T extends (...args: any[]) => void>(
+export const debounce = <T extends (...args: unknown[]) => void>(
   func: T,
   delay: number
 ) => {
